@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script>
+            var xmlhttp=new XMLHttpRequest();
+            function loadPlanets()
+            {
+                xmlhttp.open("GET","C:\DEV2022\DHANA\DevJS\secondlist.html",false);
+                xmlhttp.send();
+                alert(xmlhttp.responseText);
+                var planets=JSON.parse(xmlhttp.responseText);
+                var ulElement=document.getElementById("planetList");
+                for(var planet in planets)
+                {
+                    var listItem=ulElement.appendChild(document.createElement("li"));
+                    listItem.appendChild(document.createTextNode(planets[planet]));
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="button" value="click" onclick="loadPlanets()" />
+        </form>
+    </body>
+</html>
